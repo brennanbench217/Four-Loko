@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fantasy Football Punishment</title>
+<title>Happy Valley Fantasy Football League</title>
 
 <style>
 body {
@@ -16,7 +17,12 @@ body {
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #bbb;
+    margin-bottom: 25px;
 }
 
 video {
@@ -25,14 +31,10 @@ video {
     border-radius: 10px;
 }
 
-/* Hide timeline on many browsers */
-video::-webkit-media-controls-timeline {
-    display: none;
-}
-
-video::-webkit-media-controls-current-time-display,
-video::-webkit-media-controls-time-remaining-display {
-    display: none;
+.footer {
+    margin-top: 20px;
+    color: #888;
+    font-size: 14px;
 }
 </style>
 
@@ -40,20 +42,21 @@ video::-webkit-media-controls-time-remaining-display {
 
 <body>
 
-<h1>Fantasy Football Punishment</h1>
+<h1>Happy Valley Fantasy Football League</h1>
 
-<video id="video" controls preload="auto" playsinline>
-    <source src="https://res.cloudinary.com/vcobq2ny/video/upload/f_mp4/v1784957155/IMG_6046-compressed_nbi5ty.mov" type="video/mp4">
+<div class="subtitle">
+2026 Season Media Archive
+</div>
+
+<video controls playsinline preload="metadata">
+    <source src="https://res.cloudinary.com/vcobq2ny/video/upload/v1784957155/IMG_6046-compressed_nbi5ty.mov" type="video/mp4">
+    Your browser does not support this video.
 </video>
 
-<script>
-
-// Disable right click
-video.addEventListener("contextmenu", function(e) {
-    e.preventDefault();
-});
-
-</script>
+<div class="footer">
+Happy Valley Fantasy Football League • Official Archive
+</div>
 
 </body>
+
 </html>
