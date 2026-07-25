@@ -35,6 +35,15 @@ video {
     border-radius: 12px;
 }
 
+button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
 .footer {
     margin-top: 25px;
     color: #777;
@@ -55,15 +64,16 @@ video {
 
 <div class="video-container">
 
-<video id="leagueVideo" controls playsinline preload="metadata">
+<video id="leagueVideo" playsinline preload="metadata">
 
     <source src="https://res.cloudinary.com/vcobq2ny/video/upload/v1784959543/IMG_6046-compressed_nbi5ty_tqhog3.mp4" type="video/mp4">
-
-    Your browser does not support this video.
 
 </video>
 
 </div>
+
+
+<button onclick="toggleVideo()">Play / Pause</button>
 
 
 <div class="footer">
@@ -75,36 +85,27 @@ Happy Valley Fantasy Football League
 
 const video = document.getElementById("leagueVideo");
 
-let maxWatchedTime = 0;
-let seeking = false;
+function toggleVideo() {
 
-
-// Save the furthest point actually watched
-video.addEventListener("timeupdate", function () {
-
-    if (!seeking && video.currentTime > maxWatchedTime) {
-        maxWatchedTime = video.currentTime;
+    if (video.paused) {
+        video.play();
+    } else {
+        video.pause();
     }
 
-});
+}
 
 
-// Detect attempts to jump ahead
-video.addEventListener("seeking", function () {
+// Prevent keyboard shortcuts from skipping
+document.addEventListener("keydown", function(event) {
 
-    seeking = true;
-
-    if (video.currentTime > maxWatchedTime + 1) {
-        video.currentTime = maxWatchedTime;
+    if (
+        event.key === "ArrowRight" ||
+        event.key === "ArrowLeft" ||
+        event.key === " "
+    ) {
+        event.preventDefault();
     }
-
-});
-
-
-// Resume tracking
-video.addEventListener("seeked", function () {
-
-    seeking = false;
 
 });
 
