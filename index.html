@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fantasy Football Punishment</title>
+
+<style>
+body {
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+video {
+    width: 95%;
+    max-width: 900px;
+    border-radius: 10px;
+}
+
+/* Hide timeline on many browsers */
+video::-webkit-media-controls-timeline {
+    display: none;
+}
+
+video::-webkit-media-controls-current-time-display,
+video::-webkit-media-controls-time-remaining-display {
+    display: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Fantasy Football Punishment</h1>
+
+<video id="video" controls controlsList="nodownload noplaybackrate">
+    <source src="VIDEO_LINK_HERE" type="video/mp4">
+</video>
+
+<p>
+Skipping ahead has been disabled.
+</p>
+
+<script>
+
+const video = document.getElementById("video");
+
+let lastTime = 0;
+
+// Track normal watching
+video.addEventListener("timeupdate", function() {
+    if (!video.seeking) {
+        lastTime = video.currentTime;
+    }
+});
+
+// Stop skipping ahead
+video.addEventListener("seeking", function() {
+    if (video.currentTime > lastTime + 0.5) {
+        video.currentTime = lastTime;
+    }
+});
+
+// Disable right click
+video.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+});
+
+</script>
+
+</body>
+</html>
