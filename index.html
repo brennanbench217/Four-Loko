@@ -48,24 +48,6 @@ video::-webkit-media-controls-time-remaining-display {
 
 <script>
 
-const video = document.getElementById("video");
-
-let lastTime = 0;
-
-// Track normal watching
-video.addEventListener("timeupdate", function() {
-    if (!video.seeking) {
-        lastTime = video.currentTime;
-    }
-});
-
-// Stop skipping ahead
-video.addEventListener("seeking", function() {
-    if (video.currentTime > lastTime + 0.5) {
-        video.currentTime = lastTime;
-    }
-});
-
 // Disable right click
 video.addEventListener("contextmenu", function(e) {
     e.preventDefault();
